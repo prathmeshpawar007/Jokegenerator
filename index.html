@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joke App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+       
+    <div class="jokeContainer">
+ 
+        <span id="emoji">Joke Generator😆</span>
+
+        <h2 id="jokeText"></h2>
+
+        <button id="button" onclick="location.reload()">Get new joke</button>
+    </div>
+</div>
+
+
+
+
+    <!-- JavaScript Part -->
+
+    <script src="https://unpkg.com/sv443-joke-api@0.0.8/web/index.js"></script>
+    <script >var container = document.getElementsByClassName('jokeContainer')
+        var jokeText = document.getElementById('jokeText');
+        var button = document.getElementById('button');
+        
+        JokeAPI.getJokes({
+            jokeType:"single"
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            displayJoke(data)
+        })
+        
+        function displayJoke(jokeData){
+            jokeText.innerHTML = jokeData.joke;
+            console.log(jokeData.joke)
+        }
+
+    </script>
+</body>
+</html>
